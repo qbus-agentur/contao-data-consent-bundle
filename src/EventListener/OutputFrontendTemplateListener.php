@@ -25,7 +25,7 @@ class OutputFrontendTemplateListener
         $lang = $objPage->rootLanguage ?: 'en';
 
         $content = \preg_replace_callback(
-            '/(<iframe[^>]*) src="([^"]*)"/i',
+            '/(<iframe[^>]*) src="([^"]*)"(?! data-src)/i',
             function ($matches) use ($lang) {
                 return sprintf(
                     '%s src="iframe-placeholder/lang/%s?original-url=%s" data-src="%s"',
